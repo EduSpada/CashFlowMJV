@@ -1,6 +1,6 @@
 # CashFlow
 
-CashFlow é uma WEB API responsável por registrar um fluxo de caixa para comerciantes ou até mesmo para uso pessoal, o Back End foi desenvolvido com .NET Core 6.
+CashFlow é uma WEB API responsável por registrar um fluxo de caixa para comerciantes ou até mesmo para uso pessoal, foi desenvolvido com .NET Core 6.
 
 
 
@@ -9,13 +9,13 @@ CashFlow é uma WEB API responsável por registrar um fluxo de caixa para comerc
 - [@EduSpada](https://www.github.com/EduSpada)
 
 
-## Implantação em Produção como Demonstração
+## Implantação no [Azure](https://portal.azure.com/) em Produção como Demonstração
 
  - [CashFlow no Azure](https://cashflowmjv.azurewebsites.net/)
 
 
 
-## Instalação
+## Instalação Local
 ### Pré-requisitos
 Será necessário ter instalado:
 #### SDK do ASP.NET Core Runtime 6.0.14 para sua distribuição específica
@@ -83,9 +83,40 @@ Esse comando consistirá as tabelas e os dados preexistentes no banco de dados.
 
 Execute o comando abaixo na pasta raiz do projeto.
 ```bash
-  dotnet watch  run --project .\CashFlowMvc.WebUI\CashFlowMvc.WebUI.csproj
+  dotnet run --project .\CashFlowMvc.WebUI\CashFlowMvc.WebUI.csproj
 ```
 
 Assim que concluir a execução o projeto estará executando no link abaixo:
 
 - [Cash Flow Localhost](https://localhost:7263/)
+## Funcionalidades
+
+- Métodos de Pagamento
+
+É posível criar, editar e excluir métodos de pagamento, e funcionam como a categoria da operação, eles tem o atributo de direção que ajuda a entender se a operação foi de entrada ou saída do fluxo de caixa.
+- Operaçóes
+
+É posível criar, editar e excluir operações classificando-as conforme a ocorrência, elas serão exibidas em verde para entradas e vermelho para saídas.
+- Usuários
+É possivel criar novos usuários.
+
+
+## Usuários Padrão para Teste local
+
+Na primeira execução, é excutado um seed que inclui alguns usuários de teste com diferentes niveis de segurança, são eles:
+
+- usuario@localhost
+Possui permissão de visualizar todas as páginas, mas não pode criar, deletar ou editar os registros.
+
+- employer@localhost
+Possui permissão de visualizar todas as páginas, criar métodos de pagamento e operações, mas não pode editar ou deletar os registros nem criar usuários.
+
+- manager@localhost
+Possui permissão de visualizar todas as páginas, criar, editar e deletar métodos de pagamento e operações, mas não pode criar usuários.
+
+- admin@localhost
+Não possui permissão de visualizar todas as páginas, criar, editar e deletar métodos de pagamento e operações, mas pode exclusivamente novos criar usuários.
+
+Por padrão a senha é UmASenh@F04t3 exemplificando o padrão que deve ser adotado para novos usuários.
+Obs.: Para implementar em produção as senhas devem ser alteradas. É necessário apenas um usuário Admin para dar início ao projeto.
+
