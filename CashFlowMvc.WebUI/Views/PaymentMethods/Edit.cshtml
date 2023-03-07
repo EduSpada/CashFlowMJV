@@ -1,0 +1,40 @@
+﻿@model CashFlowMvc.Application.DTOs.PaymentMethodDTO
+
+@{
+    ViewData["Title"] = "Update Payment Method";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Descripition</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DirectionId" class="control-label">Direction Id</label>
+                <div class="col-md-10">
+                    <select asp-for="DirectionId" class="form-control">
+                        <option value=1>Inflow</option>
+                        <option value=2>Outflow</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
