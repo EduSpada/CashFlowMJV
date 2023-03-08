@@ -103,6 +103,14 @@ Assim que concluir a execução o projeto estará executando no link abaixo:
 
 É posível visualizar operações por dia, e o saldo total do balanço.
 
+- Operations?description=some+description
+
+É posível visualizar operações por descripition, e o saldo total do balanço.
+
+- Operations?date=yyy-mm-dd&description=some+description
+
+É posível visualizar operações por dia e descripition, e o saldo total do balanço.
+
 - Account/Register
 
 É possivel criar novos usuários.

@@ -12,8 +12,10 @@ namespace CashFlowMvc.Domain.Interfaces
 
          Task<Operation> GetTrasactionPaymentMethodAsync(int? id);
 
-         Task<Operation> GetByDescriptionAsync(string? description);
+         Task<List<Operation>> GetByDescriptionAsync(string? description);
 
          Task<List<Operation>> GetByCreatedAtAsync(DateTime? createdAt);
+
+         Task<List<Operation>> GetByCreatedAtAndDescriptionAsync(DateTime? createdAt, string? description);
     }
 }

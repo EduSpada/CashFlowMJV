@@ -21,10 +21,22 @@ namespace CashFlowMvc.Infra.Data.Repositories
                         o.CreatedAt.Value.Date == createdAt.Value.Date).ToListAsync();
 
         }
-
-        public async Task<Operation> GetByDescriptionAsync(string? description)
+        public async Task<List<Operation>> GetByCreatedAtAndDescriptionAsync(DateTime? createdAt, string? description)
         {
-            return await _context.Operations.FindAsync(description);
+            return await _context.Operations.Include(p => p.PaymentMethod)
+                                            .OrderBy(t => t.CreatedAt)
+                                            .Where(o => o.CreatedAt.Value.Date == createdAt.Value.Date)
+                                            .Where(d=> d.Description.Contains(description))
+                                            .ToListAsync();
+
+        }
+
+        public async Task<List<Operation>> GetByDescriptionAsync(string? description)
+        {
+            return await _context.Operations.Include(p => p.PaymentMethod)
+                                            .OrderBy(t => t.CreatedAt)
+                                            .Where(d => d.Description.Contains(description))
+                                            .ToListAsync();
         }
 
         public async Task<Operation> GetByIdAsync(int? id)

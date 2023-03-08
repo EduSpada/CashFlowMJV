@@ -13,9 +13,12 @@ namespace CashFlowMvc.Application.Interfaces
 
          Task<OperationDTO> GetOperationDirectionAsync(int? id);
 
-         Task<OperationDTO> GetByDescriptionAsync(string? description);
+         Task<List<OperationDTO>> GetByDescriptionAsync(string? description);
 
          Task<List<OperationDTO>> GetByCreatedAtAsync(DateTime? createdAt);
+
+         Task<List<OperationDTO>> GetByCreatedAtAndDescriptionAsync(DateTime? createdAt, string? description);
+
          Task CreateAsync(OperationDTO OperationDto);
          Task UpdateAsync(OperationDTO OperationDto);
          Task RemoveAsync(int? id);
