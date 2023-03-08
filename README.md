@@ -91,17 +91,20 @@ Assim que concluir a execução o projeto estará executando no link abaixo:
 - [Cash Flow Localhost](https://localhost:7263/)
 ## Funcionalidades
 
-- Métodos de Pagamento
+- PaymentMethods
 
 É posível criar, editar e excluir métodos de pagamento, e funcionam como a categoria da operação, eles tem o atributo de direção que ajuda a entender se a operação foi de entrada ou saída do fluxo de caixa.
-- Operacoes
+
+- Operations
 
 É posível criar, editar e excluir operações classificando-as conforme a ocorrência, elas serão exibidas em verde para entradas e vermelho para saídas.
 
-- Operacoes?date=yyy-mm-dd
+- Operations?date=yyy-mm-dd
+
 É posível visualizar operações por dia, e o saldo total do balanço.
 
-- Usuários
+- Account/Register
+
 É possivel criar novos usuários.
 
 
