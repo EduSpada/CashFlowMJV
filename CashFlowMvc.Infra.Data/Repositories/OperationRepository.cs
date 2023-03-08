@@ -13,9 +13,13 @@ namespace CashFlowMvc.Infra.Data.Repositories
             _context = context;
         }
 
-        public async Task<Operation> GetByCreatedAtAsync(string? createdAt)
+        public async Task<List<Operation>> GetByCreatedAtAsync(DateTime? createdAt)
         {
-            return await _context.Operations.FindAsync(createdAt);
+            return await _context.Operations.Include(p => 
+                        p.PaymentMethod).OrderBy(t => 
+                        t.CreatedAt).Where(o => 
+                        o.CreatedAt.Value.Date == createdAt.Value.Date).ToListAsync();
+
         }
 
         public async Task<Operation> GetByDescriptionAsync(string? description)

@@ -14,6 +14,6 @@ namespace CashFlowMvc.Domain.Interfaces
 
          Task<Operation> GetByDescriptionAsync(string? description);
 
-         Task<Operation> GetByCreatedAtAsync(string? createdAt);
+         Task<List<Operation>> GetByCreatedAtAsync(DateTime? createdAt);
     }
 }

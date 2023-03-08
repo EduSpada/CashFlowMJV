@@ -5,7 +5,6 @@
 
 # Development version
 *.Development.json
-appsettings.json
 # DB
 *.db
 

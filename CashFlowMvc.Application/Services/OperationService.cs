@@ -53,10 +53,10 @@ namespace CashFlowMvc.Application.Services
             return _mapper.Map<OperationDTO>(operationsEntity);
         }
 
-        public async Task<OperationDTO> GetByCreatedAtAsync(string? createdAt)
+        public async Task<List<OperationDTO>> GetByCreatedAtAsync(DateTime? createdAt)
         {
             var operationsEntity = await _operationRepository.GetByCreatedAtAsync(createdAt);
-            return _mapper.Map<OperationDTO>(operationsEntity);
+            return _mapper.Map<List<OperationDTO>>(operationsEntity);
         }
 
         public async Task CreateAsync(OperationDTO operationDto)

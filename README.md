@@ -97,6 +97,9 @@ Assim que concluir a execução o projeto estará executando no link abaixo:
 - Operaçóes
 
 É posível criar, editar e excluir operações classificando-as conforme a ocorrência, elas serão exibidas em verde para entradas e vermelho para saídas.
+- Operaçóes/ByDate?dateOp=yyy-mm-dd
+É posível visualizar operações por dia, e o saldo total do balanço.
+
 - Usuários
 É possivel criar novos usuários.
 

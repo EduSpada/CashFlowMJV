@@ -24,7 +24,14 @@ namespace CashFlowMvc.WebUI.Controllers
             var operations = await _operationService.GetOperationsAsync();
             return View(operations);
         }
-
+        [Authorize(Roles = "User")]
+        [HttpGet()]
+        public async Task<IActionResult> ByDate(string? dateOp)
+        {   
+            var dateOper = Convert.ToDateTime(dateOp);
+            var operations = await _operationService.GetByCreatedAtAsync(dateOper);
+            return View(operations);
+        }
         [Authorize(Roles = "Employer")]
         [HttpGet()]
         public async Task<IActionResult> Create()
@@ -99,6 +106,7 @@ namespace CashFlowMvc.WebUI.Controllers
             await _operationService.RemoveAsync(id);
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "User")]
         [HttpGet()]
         public async Task<IActionResult> Details(int? id)
         {
