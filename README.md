@@ -94,11 +94,11 @@ Assim que concluir a execução o projeto estará executando no link abaixo:
 - Métodos de Pagamento
 
 É posível criar, editar e excluir métodos de pagamento, e funcionam como a categoria da operação, eles tem o atributo de direção que ajuda a entender se a operação foi de entrada ou saída do fluxo de caixa.
-- Operaçóes
+- Operacoes
 
 É posível criar, editar e excluir operações classificando-as conforme a ocorrência, elas serão exibidas em verde para entradas e vermelho para saídas.
 
-- Operaçóes/ByDate?dateOp=yyy-mm-dd
+- Operacoes?date=yyy-mm-dd
 É posível visualizar operações por dia, e o saldo total do balanço.
 
 - Usuários

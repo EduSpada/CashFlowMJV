@@ -19,19 +19,21 @@ namespace CashFlowMvc.WebUI.Controllers
 
         [Authorize(Roles = "User")]
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? date)
         {
-            var operations = await _operationService.GetOperationsAsync();
-            return View(operations);
+            if (date == null)
+            {
+                var operations = await _operationService.GetOperationsAsync();
+                return View(operations);
+            }
+            else
+            {
+                var dateOper = Convert.ToDateTime(date);
+                var operations = await _operationService.GetByCreatedAtAsync(dateOper);
+                return View(operations);
+            }
         }
-        [Authorize(Roles = "User")]
-        [HttpGet()]
-        public async Task<IActionResult> ByDate(string? dateOp)
-        {   
-            var dateOper = Convert.ToDateTime(dateOp);
-            var operations = await _operationService.GetByCreatedAtAsync(dateOper);
-            return View(operations);
-        }
+
         [Authorize(Roles = "Employer")]
         [HttpGet()]
         public async Task<IActionResult> Create()
