@@ -2,21 +2,188 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text">
-<div class="h-full preview-width md:w-auto border border-gray-500 rounded-md p-6 preview bg-white full-screen 
-      overflow-x-scroll md:overflow-x-auto overflow-y-scroll"><h1>CashFlow</h1><p>CashFlow é uma WEB API responsável por registrar um fluxo de caixa para comerciantes ou até mesmo para uso pessoal, foi desenvolvido com .NET Core 6.</p><h2>Autores</h2><ul><li><a href="https://www.github.com/EduSpada" target="_blank">EduSpada</a></li></ul><h2>Implantação no <a href="https://portal.azure.com/" target="_blank">Azure</a> em Produção como Demonstração</h2><ul><li><a href="https://cashflowmjv.azurewebsites.net/" target="_blank">CashFlow no Azure</a></li></ul><h2>Instalação Local</h2><h3>Pré-requisitos</h3><p>Será necessário ter instalado:</p><h4>SDK do ASP.NET Core Runtime 6.0.14 para sua distribuição específica</h4><ul><li><a href="https://learn.microsoft.com/dotnet/core/install/linux?WT.mc_id=dotnet-35129-website" target="_blank">Linux</a></li><li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.406-macos-x64-installer" target="_blank">macOS</a></li><li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.406-windows-x64-installer" target="_blank">Windows</a></li></ul><h4>Entity Framework Core tools para o CLI</h4><p>Após a instalação do SDK do ASP.NET Core execute o seguinte comando.</p><pre><code class="language-bash">  dotnet tool install --global dotnet-ef</code></pre><h2>Deploy</h2><h3>Conectando com o banco de dados</h3><p>Para fazer o deploy desse projeto será necessário configurar um banco de dados Mysql limpo no arquivo appsettings.json que está no projeto CashFlowMvc.WebUI.</p><p>Para a configuração do banco de dados é necessário configurar na variável "MysqlConnectionString" uma ConnectionString, seu arquivo deve ficar parecido com o json abaixo:</p><pre><code class="language-json">
-{
-  "ConnectionStrings": {
-    "DefaultConnectionString": "Data Source=CashFlow.db",
-    "MysqlConnectionString": "Server=NameIPServer;Port=3306;Database=cashflowmydb;User ID=CashFlowSysAdm; Password=SuaSenha"
+<div data-target="readme-toc.content" class="Box-body px-5 pb-5">
+            <article class="markdown-body entry-content container-lg" itemprop="text"><h1 tabindex="-1" dir="auto"><a id="user-content-cashflow" class="anchor" aria-hidden="true" href="#cashflow"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>CashFlow</h1>
+<p dir="auto">CashFlow é uma WEB API responsável por registrar um fluxo de caixa para comerciantes ou até mesmo para uso pessoal, foi desenvolvido com .NET Core 6.</p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-autores" class="anchor" aria-hidden="true" href="#autores"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Autores</h2>
+<ul dir="auto">
+<li><a href="https://www.github.com/EduSpada">#EduSpada</a></li>
+</ul>
+<h2 tabindex="-1" dir="auto"><a id="user-content-implantação-no-azure-em-produção-como-demonstração" class="anchor" aria-hidden="true" href="#implantação-no-azure-em-produção-como-demonstração"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Implantação no <a href="https://portal.azure.com/" rel="nofollow">Azure</a> em Produção como Demonstração</h2>
+<ul dir="auto">
+<li><a href="https://cashflowmjv.azurewebsites.net/" rel="nofollow">CashFlow no Azure</a></li>
+</ul>
+<h2 tabindex="-1" dir="auto"><a id="user-content-instalação-local" class="anchor" aria-hidden="true" href="#instalação-local"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Instalação Local</h2>
+<h3 tabindex="-1" dir="auto"><a id="user-content-pré-requisitos" class="anchor" aria-hidden="true" href="#pré-requisitos"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Pré-requisitos</h3>
+<p dir="auto">Será necessário ter instalado:</p>
+<h4 tabindex="-1" dir="auto"><a id="user-content-sdk-do-aspnet-core-runtime-6014-para-sua-distribuição-específica" class="anchor" aria-hidden="true" href="#sdk-do-aspnet-core-runtime-6014-para-sua-distribuição-específica"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>SDK do ASP.NET Core Runtime 6.0.14 para sua distribuição específica</h4>
+<ul dir="auto">
+<li><a href="https://learn.microsoft.com/dotnet/core/install/linux?WT.mc_id=dotnet-35129-website" rel="nofollow">Linux</a></li>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.406-macos-x64-installer" rel="nofollow">macOS</a></li>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.406-windows-x64-installer" rel="nofollow">Windows</a></li>
+</ul>
+<h4 tabindex="-1" dir="auto"><a id="user-content-entity-framework-core-tools-para-o-cli" class="anchor" aria-hidden="true" href="#entity-framework-core-tools-para-o-cli"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Entity Framework Core tools para o CLI</h4>
+<p dir="auto">Após a instalação do SDK do ASP.NET Core execute o seguinte comando.</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>  dotnet tool install --global dotnet-ef</pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="  dotnet tool install --global dotnet-ef" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<h2 tabindex="-1" dir="auto"><a id="user-content-deploy" class="anchor" aria-hidden="true" href="#deploy"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Deploy</h2>
+<h3 tabindex="-1" dir="auto"><a id="user-content-conectando-com-o-banco-de-dados" class="anchor" aria-hidden="true" href="#conectando-com-o-banco-de-dados"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Conectando com o banco de dados</h3>
+<p dir="auto">Para fazer o deploy desse projeto será necessário configurar um banco de dados Mysql limpo no arquivo appsettings.json que está no projeto CashFlowMvc.WebUI.</p>
+<p dir="auto">Para a configuração do banco de dados é necessário configurar na variável "MysqlConnectionString" uma ConnectionString, seu arquivo deve ficar parecido com o json abaixo:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto"><pre>{
+  <span class="pl-ent">"ConnectionStrings"</span>: {
+    <span class="pl-ent">"DefaultConnectionString"</span>: <span class="pl-s"><span class="pl-pds">"</span>Data Source=CashFlow.db<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"MysqlConnectionString"</span>: <span class="pl-s"><span class="pl-pds">"</span>Server=NameIPServer;Port=3306;Database=cashflowmydb;User ID=CashFlowSysAdm; Password=SuaSenha<span class="pl-pds">"</span></span>
 },
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
+  <span class="pl-ent">"Logging"</span>: {
+    <span class="pl-ent">"LogLevel"</span>: {
+      <span class="pl-ent">"Default"</span>: <span class="pl-s"><span class="pl-pds">"</span>Information<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"Microsoft.AspNetCore"</span>: <span class="pl-s"><span class="pl-pds">"</span>Warning<span class="pl-pds">"</span></span>
     }
   },
-  "AllowedHosts": "*"
-}</code></pre><h3>Build</h3><p>Utilize o comando abaixo no diretório raiz para buildar e instalar as dependências da solução.</p><pre><code class="language-bash">  dotnet build</code></pre><h3>Realizando a Migration</h3><p>Com o Entity Framework Core tools instalado execute no diretório da solução o comando:</p><pre><code class="language-bash">  dotnet ef  migrations remove --project CashFlowMvc.Infra.Data -s CashFlowMvc.WebUI -c ApplicationDbContext --verbose</code></pre><p>Esse comando limpará as migrations anteriores para evitar erros no update, caso acontecer algum erro pode fazer manualmente escluindo a pasta Migrations do projeto CashFlowMvc.Infra.Data.</p><p>Em seguida adicione uma nova migration com o comando:</p><pre><code class="language-bash">  dotnet ef  migrations add initial --project CashFlowMvc.Infra.Data -s CashFlowMvc.WebUI -c ApplicationDbContext --verbose</code></pre><p>Esse comando cria os arquivos de migrations.</p><p>E por fim, se tudo ocorreu bem, execute o comando de update a seguir:</p><pre><code class="language-bash">  dotnet ef database update --project CashFlowMvc.Infra.Data -s CashFlowMvc.WebUI -c ApplicationDbContext --verbose</code></pre><p>Esse comando consistirá as tabelas e os dados preexistentes no banco de dados.</p><h2>Executando o projeto</h2><p>Execute o comando abaixo na pasta raiz do projeto.</p><pre><code class="language-bash">  dotnet run --project .\CashFlowMvc.WebUI\CashFlowMvc.WebUI.csproj</code></pre><p>Assim que concluir a execução o projeto estará executando no link abaixo:</p><ul><li><a href="https://localhost:7263/" target="_blank">Cash Flow Localhost</a></li></ul><h2>Funcionalidades</h2><ul><li>PaymentMethods</li></ul><p>É posível criar, editar e excluir métodos de pagamento, e funcionam como a categoria da operação, eles tem o atributo de direção que ajuda a entender se a operação foi de entrada ou saída do fluxo de caixa.</p><ul><li>Operations</li></ul><p>É posível criar, editar e excluir operações classificando-as conforme a ocorrência, elas serão exibidas em verde para entradas e vermelho para saídas.</p><ul><li>Operations?date=yyy-mm-dd</li></ul><p>É posível visualizar operações por dia, e o saldo total do balanço.</p><ul><li>Account/Register</li></ul><p>É possivel criar novos usuários.</p><h2>Usuários Padrão para Teste local</h2><p>Na primeira execução, é excutado um seed que inclui alguns usuários de teste com diferentes niveis de segurança, são eles:</p><ul><li>usuario@localhost</li></ul><p>Possui permissão de visualizar todas as páginas, mas não pode criar, deletar ou editar os registros.</p><ul><li>employer@localhost</li></ul><p>Possui permissão de visualizar todas as páginas, criar métodos de pagamento e operações, mas não pode editar ou deletar os registros nem criar usuários.</p><ul><li>manager@localhost</li></ul><p>Possui permissão de visualizar todas as páginas, criar, editar e deletar métodos de pagamento e operações, mas não pode criar usuários.</p><ul><li>admin@localhost</li></ul><p>Não possui permissão de visualizar todas as páginas, criar, editar e deletar métodos de pagamento e operações, mas pode exclusivamente novos criar usuários.</p><p>Por padrão a senha é UmASenh@F04t3 exemplificando o padrão que deve ser adotado para novos usuários.
-Obs.: Para implementar em produção as senhas devem ser alteradas. É necessário apenas um usuário Admin para dar início ao projeto.</p></div>
-</div>
+  <span class="pl-ent">"AllowedHosts"</span>: <span class="pl-s"><span class="pl-pds">"</span>*<span class="pl-pds">"</span></span>
+}</pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="
+{
+  &quot;ConnectionStrings&quot;: {
+    &quot;DefaultConnectionString&quot;: &quot;Data Source=CashFlow.db&quot;,
+    &quot;MysqlConnectionString&quot;: &quot;Server=NameIPServer;Port=3306;Database=cashflowmydb;User ID=CashFlowSysAdm; Password=SuaSenha&quot;
+},
+  &quot;Logging&quot;: {
+    &quot;LogLevel&quot;: {
+      &quot;Default&quot;: &quot;Information&quot;,
+      &quot;Microsoft.AspNetCore&quot;: &quot;Warning&quot;
+    }
+  },
+  &quot;AllowedHosts&quot;: &quot;*&quot;
+}" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<h3 tabindex="-1" dir="auto"><a id="user-content-build" class="anchor" aria-hidden="true" href="#build"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Build</h3>
+<p dir="auto">Utilize o comando abaixo no diretório raiz para buildar e instalar as dependências da solução.</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>  dotnet build</pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="  dotnet build" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<h3 tabindex="-1" dir="auto"><a id="user-content-realizando-a-migration" class="anchor" aria-hidden="true" href="#realizando-a-migration"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Realizando a Migration</h3>
+<p dir="auto">Com o Entity Framework Core tools instalado execute no diretório da solução o comando:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>  dotnet ef  migrations remove --project CashFlowMvc.Infra.Data -s CashFlowMvc.WebUI -c ApplicationDbContext --verbose</pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="  dotnet ef  migrations remove --project CashFlowMvc.Infra.Data -s CashFlowMvc.WebUI -c ApplicationDbContext --verbose" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto">Esse comando limpará as migrations anteriores para evitar erros no update, caso acontecer algum erro pode fazer manualmente escluindo a pasta Migrations do projeto CashFlowMvc.Infra.Data.</p>
+<p dir="auto">Em seguida adicione uma nova migration com o comando:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>  dotnet ef  migrations add initial --project CashFlowMvc.Infra.Data -s CashFlowMvc.WebUI -c ApplicationDbContext --verbose</pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="  dotnet ef  migrations add initial --project CashFlowMvc.Infra.Data -s CashFlowMvc.WebUI -c ApplicationDbContext --verbose" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto">Esse comando cria os arquivos de migrations.</p>
+<p dir="auto">E por fim, se tudo ocorreu bem, execute o comando de update a seguir:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>  dotnet ef database update --project CashFlowMvc.Infra.Data -s CashFlowMvc.WebUI -c ApplicationDbContext --verbose</pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="  dotnet ef database update --project CashFlowMvc.Infra.Data -s CashFlowMvc.WebUI -c ApplicationDbContext --verbose" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto">Esse comando consistirá as tabelas e os dados preexistentes no banco de dados.</p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-executando-o-projeto" class="anchor" aria-hidden="true" href="#executando-o-projeto"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Executando o projeto</h2>
+<p dir="auto">Execute o comando abaixo na pasta raiz do projeto.</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>  dotnet run --project .<span class="pl-cce">\C</span>ashFlowMvc.WebUI<span class="pl-cce">\C</span>ashFlowMvc.WebUI.csproj</pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="  dotnet run --project .\CashFlowMvc.WebUI\CashFlowMvc.WebUI.csproj" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto">Assim que concluir a execução o projeto estará executando no link abaixo:</p>
+<ul dir="auto">
+<li><a href="https://localhost:7263/" rel="nofollow">Cash Flow Localhost</a></li>
+</ul>
+<h2 tabindex="-1" dir="auto"><a id="user-content-funcionalidades" class="anchor" aria-hidden="true" href="#funcionalidades"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Funcionalidades</h2>
+<ul dir="auto">
+<li>PaymentMethods</li>
+</ul>
+<p dir="auto">É posível criar, editar e excluir métodos de pagamento, e funcionam como a categoria da operação, eles tem o atributo de direção que ajuda a entender se a operação foi de entrada ou saída do fluxo de caixa.</p>
+<ul dir="auto">
+<li>Operations</li>
+</ul>
+<p dir="auto">É posível criar, editar e excluir operações classificando-as conforme a ocorrência, elas serão exibidas em verde para entradas e vermelho para saídas.</p>
+<ul dir="auto">
+<li>Operations?date=yyy-mm-dd</li>
+</ul>
+<p dir="auto">É posível visualizar operações por dia, e o saldo total do balanço.</p>
+<ul dir="auto">
+<li>Operations?description=some+description</li>
+</ul>
+<p dir="auto">É posível visualizar operações por descripition, e o saldo total do balanço.</p>
+<ul dir="auto">
+<li>Operations?date=yyy-mm-dd&amp;description=some+description</li>
+</ul>
+<p dir="auto">É posível visualizar operações por dia e descripition, e o saldo total do balanço.</p>
+<ul dir="auto">
+<li>Account/Register</li>
+</ul>
+<p dir="auto">É possivel criar novos usuários.</p>
+<h2 tabindex="-1" dir="auto"><a id="user-content-usuários-padrão-para-teste-local" class="anchor" aria-hidden="true" href="#usuários-padrão-para-teste-local"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" style=""><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Usuários Padrão para Teste local</h2>
+<p dir="auto">Na primeira execução, é excutado um seed que inclui alguns usuários de teste com diferentes niveis de segurança, são eles:</p>
+<ul dir="auto">
+<li>
+<p dir="auto">usuario@localhost
+Possui permissão de visualizar todas as páginas, mas não pode criar, deletar ou editar os registros.</p>
+</li>
+<li>
+<p dir="auto">employer@localhost
+Possui permissão de visualizar todas as páginas, criar métodos de pagamento e operações, mas não pode editar ou deletar os registros nem criar usuários.</p>
+</li>
+<li>
+<p dir="auto">manager@localhost
+Possui permissão de visualizar todas as páginas, criar, editar e deletar métodos de pagamento e operações, mas não pode criar usuários.</p>
+</li>
+<li>
+<p dir="auto">admin@localhost
+Não possui permissão de visualizar todas as páginas, criar, editar e deletar métodos de pagamento e operações, mas pode exclusivamente novos criar usuários.</p>
+</li>
+</ul>
+<p dir="auto">Por padrão a senha é UmASenh@F04t3 exemplificando o padrão que deve ser adotado para novos usuários.
+Obs.: Para implementar em produção as senhas devem ser alteradas. É necessário apenas um usuário Admin para dar início ao projeto.</p>
+</article>
+          </div>
